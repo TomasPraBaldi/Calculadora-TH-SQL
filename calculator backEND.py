@@ -1,4 +1,6 @@
 
+#including defs
+
 def val1():
     global valor1
     #valor1 = float(int(input("First value: ")))
