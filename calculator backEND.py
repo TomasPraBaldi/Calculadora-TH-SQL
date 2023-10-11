@@ -1,14 +1,8 @@
 
-<<<<<<< HEAD
 import tkinter as tk
 from tkinter import messagebox
 window = tk.Tk()
 window.geometry("500x300")
-=======
-
-#including defs comment h TESTE DE UPDATE SEM MERGE
-
->>>>>>> fd022c3e66ef2be00d019a5d312aa8d04c9a6350
 
 
 def button_clicked():
