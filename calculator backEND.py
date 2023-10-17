@@ -1,12 +1,15 @@
 # BIBLIOTECAS ---------------------------------------------------------------------------------
 import tkinter as tk
 from tkinter import messagebox
+import customtkinter as ctk
 import functools
 
 # GUI - DEFINIÇÕES ----------------------------------------------------------------------------
-window = tk.Tk()
-totalw = 315
-totalh = 455
+window = ctk.CTk()
+ctk.set_appearance_mode('dark')
+window.corner_radius = 10
+totalw = 300
+totalh = 481
 bgcolor = '#000'
 displaycolor = '#000'
 window.geometry(f'{totalw}x{totalh}')
@@ -15,7 +18,6 @@ window.iconbitmap(r"C:\Users\Hiurytg.000\Desktop\TH_SQL\Calculadora-TH-SQL\image
 window.config(bg = bgcolor)
 window.resizable(False,False)
 window.wm_attributes('-topmost', True)
-window.after(50,None)
 
 grid = tk.Frame(window)
 grid.grid(pady=70)
@@ -23,10 +25,10 @@ grid.grid(pady=70)
 buttoncolor = '#333'
 buttonfontcolor = '#eeeffe'
 buttonoperationcolor = '#65b595'
-buttonfont = ("Arial", 30, 'bold')
+buttonfont = ("Arial", 20, 'bold')
 
-buttonw = 3
-buttonh = 1
+buttonw = 4
+buttonh = 2
 
 topdisplay = tk.Text(window)
 topdisplay.place(x=0, y=40, width=totalw, height=40)
@@ -122,7 +124,7 @@ button9 = tk.Button(window, text=b9, background = buttoncolor, borderwidth=0, wi
 button9.grid(row=1, column=2, padx=0, pady=0)
 button0 = tk.Button(window, text=b0, background = buttoncolor, borderwidth=0, width = buttonw, height = buttonh, fg = buttonfontcolor , font = buttonfont, command=functools.partial(button_clicked, b0))
 button0.grid(row=4, column=0, padx=0, pady=0)
-buttoncomma = tk.Button(window, text=bc, background = buttoncolor, borderwidth=0, width = 3, height = buttonh, fg = buttonfontcolor , font = buttonfont, command=functools.partial(button_clicked, bc))
+buttoncomma = tk.Button(window, text=bc, background = buttoncolor, borderwidth=0, width = buttonw, height = buttonh, fg = buttonfontcolor , font = buttonfont, command=functools.partial(button_clicked, bc))
 buttoncomma.grid(row=4, column=1, padx=0, pady=0)
 
 buttonplus = tk.Button(window, text=bplus, background = buttonoperationcolor, borderwidth=0, width = buttonw, height = buttonh, fg = buttonfontcolor , font = buttonfont, command=functools.partial(button_clicked, bplus))
