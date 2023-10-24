@@ -3,8 +3,12 @@ import tkinter as tk
 from tkinter import messagebox
 import customtkinter as ctk
 import functools
+import math_logic
 
 # GUI - DEFINIÇÕES ----------------------------------------------------------------------------
+def button_clicked(): 
+    math_logic.button_clicked2()
+
 window = ctk.CTk()
 ctk.set_appearance_mode('dark')
 window.corner_radius = 10
@@ -67,6 +71,7 @@ bc = '.'
 ##############################################################################################
 
 # FUNÇÃO PRINCIPAL - BOTÕES & OPERAÇÕES ------------------------------------------------------
+'''
 def button_clicked(button_value, value1='', value2='', value3=''):
     if button_value == '=':
        bottomdisplay.config(state="normal")
@@ -101,7 +106,8 @@ def button_clicked(button_value, value1='', value2='', value3=''):
        bottomdisplay.config(state="normal")
        bottomdisplay.insert('end', button_value)
        bottomdisplay.config(state="disabled")
-
+'''
+       
 # BOTÕES --------------------------------------------------------------------------------------------
 button1 = tk.Button(window, text=b1, background = buttoncolor, borderwidth=0, width = buttonw, height = buttonh, fg = buttonfontcolor , font = buttonfont, command=functools.partial(button_clicked, b1))
 button1.grid(row=3, column=0, padx=0, pady=0)
@@ -135,4 +141,4 @@ buttonequals.grid(row=3, column=3, padx=0, pady=0)
 
 
 # INICIA A GUI -----------------------------------------------------------------------------------------
-window.mainloop()
+#window.mainloop()

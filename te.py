@@ -1,15 +1,14 @@
 import tkinter as tk
-import datetime
+import customtkinter as ctk
+from gui import *
+from math import *
 
-def update_label():
-    current_time = 'assd'
-    label.config(text=current_time)
-    root.after(1000, update_label)  # run itself again after 1000 ms
+class mainApp:
+    def __init__(self):
+        self.window = ctk.CTk()
+        self.window.title = ''
+        self.gui = Cgui(self.window)
+        self.math = mathLogic()
 
-root = tk.Tk()
-label = tk.Label(root)
-label.pack()
-
-update_label()  # run first time at once
-
-root.mainloop()
+if __name__ == "__main__":
+    app = mainApp()
