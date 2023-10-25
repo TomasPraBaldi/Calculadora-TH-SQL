@@ -1,12 +1,15 @@
 # BIBLIOTECAS ---------------------------------------------------------------------------------
 import tkinter as tk
 from tkinter import messagebox
+import customtkinter as ctk
 import functools
 
 # GUI - DEFINIÇÕES ----------------------------------------------------------------------------
-window = tk.Tk()
-totalw = 315
-totalh = 455
+window = ctk.CTk()
+ctk.set_appearance_mode('dark')
+window.corner_radius = 10
+totalw = 300
+totalh = 481
 bgcolor = '#000'
 displaycolor = '#000'
 window.geometry(f'{totalw}x{totalh}')
@@ -15,7 +18,6 @@ window.iconbitmap(r"C:\Users\Hiurytg.000\Desktop\TH_SQL\Calculadora-TH-SQL\image
 window.config(bg = bgcolor)
 window.resizable(False,False)
 window.wm_attributes('-topmost', True)
-window.after(50,None)
 
 grid = tk.Frame(window)
 grid.grid(pady=70)
@@ -23,10 +25,10 @@ grid.grid(pady=70)
 buttoncolor = '#333'
 buttonfontcolor = '#eeeffe'
 buttonoperationcolor = '#65b595'
-buttonfont = ("Arial", 30, 'bold')
+buttonfont = ("Arial", 20, 'bold')
 
-buttonw = 3
-buttonh = 1
+buttonw = 4
+buttonh = 2
 
 topdisplay = tk.Text(window)
 topdisplay.place(x=0, y=40, width=totalw, height=40)
@@ -64,26 +66,25 @@ bc = '.'
 ##############################################################################################
 ##############################################################################################
 
-
 # FUNÇÃO PRINCIPAL - BOTÕES & OPERAÇÕES ------------------------------------------------------
 def button_clicked(button_value, value1='', value2='', value3=''):
     if button_value == '=':
        bottomdisplay.config(state="normal")
        value2 = bottomdisplay.get('1.0','end')
-       #print(value1,value2)
+       print(value1,value2)
        bottomdisplay.delete("1.0", "end")
        bottomdisplay.insert("end", value1+value2)
        bottomdisplay.config(state="disabled")
     if button_value == '+':
        if value1 != '' and value2 != '':
           bottomdisplay.config(state="normal")
-          value3 = value1+value2
-          value1 = value3
+          value3 = value1 #value1+value2
+          value1 = bottomdisplay.get('1.0','end')
           value2 = ''
           #operator = '+'
           bottomdisplay.delete("1.0", "end")
           bottomdisplay.config(state="disabled")
-       if value1 != '' and value2 == '':
+       if value1 != '' and value2 == '': # pode ser aqui o erro -- cade o insert?
           bottomdisplay.config(state="normal")
           value2 = bottomdisplay.get('1.0','end')
           #operator = '+'
@@ -96,7 +97,7 @@ def button_clicked(button_value, value1='', value2='', value3=''):
           #operator = '+'
           bottomdisplay.delete("1.0", "end")
           bottomdisplay.config(state="disabled")
-    else:
+    else: # qualquer número cai aqui
        bottomdisplay.config(state="normal")
        bottomdisplay.insert('end', button_value)
        bottomdisplay.config(state="disabled")
@@ -122,7 +123,7 @@ button9 = tk.Button(window, text=b9, background = buttoncolor, borderwidth=0, wi
 button9.grid(row=1, column=2, padx=0, pady=0)
 button0 = tk.Button(window, text=b0, background = buttoncolor, borderwidth=0, width = buttonw, height = buttonh, fg = buttonfontcolor , font = buttonfont, command=functools.partial(button_clicked, b0))
 button0.grid(row=4, column=0, padx=0, pady=0)
-buttoncomma = tk.Button(window, text=bc, background = buttoncolor, borderwidth=0, width = 3, height = buttonh, fg = buttonfontcolor , font = buttonfont, command=functools.partial(button_clicked, bc))
+buttoncomma = tk.Button(window, text=bc, background = buttoncolor, borderwidth=0, width = buttonw, height = buttonh, fg = buttonfontcolor , font = buttonfont, command=functools.partial(button_clicked, bc))
 buttoncomma.grid(row=4, column=1, padx=0, pady=0)
 
 buttonplus = tk.Button(window, text=bplus, background = buttonoperationcolor, borderwidth=0, width = buttonw, height = buttonh, fg = buttonfontcolor , font = buttonfont, command=functools.partial(button_clicked, bplus))
