@@ -1,4 +1,4 @@
-def button_clicked2(button_value, value1='', value2='', value3=''):
+def button_clicked(button_value, value1='', value2='', value3=''):
     if button_value == '=':
        bottomdisplay.config(state="normal")
        value2 = bottomdisplay.get('1.0','end')

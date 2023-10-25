@@ -1,12 +1,11 @@
-import customtkinter as ctk
-import gui2
+import gui
 import math_logic
 
-window = gui2.window
 
 def main():
-    calculator = window
-    calculator.add = math_logic.button_clicked2
+    calculator = gui.window
+    bottomdisplay = gui.bottomdisplay
+    calculator.add = math_logic.button_clicked
     calculator.mainloop()
 
 if __name__ == "__main__":
