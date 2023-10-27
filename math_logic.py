@@ -3,39 +3,65 @@ import functools
 
 value1 = ''
 value2 = ''
-value3 = ''
 
 def button_clicked(button_value):
-    global value1, value2, value3, value4
+    global value0, value1, value2, value3
     if button_value == '=':
-       bottomdisplay.config(state="normal")
-       value2 = bottomdisplay.get('1.0','end')
-       bottomdisplay.delete("1.0", "end")
-       topdisplay.delete("1.0", "end")
-       bottomdisplay.insert('end', f'{value2}+{value3}')
-       bottomdisplay.config(state="disabled")
-    if button_value == '+':
        if value2 == '':
+         bottomdisplay.config(state="normal")
+         topdisplay.config(state="normal")
+         bottomdisplay.delete("1.0", "end")
+         topdisplay.delete("1.0", "end")
+         value3 = int(value0)+int(value1)
+         bottomdisplay.insert('end', f'{value3}')
+         bottomdisplay.config(state="disabled")
+         topdisplay.config(state="disabled")
+         return
+       if value2 != '':
+         bottomdisplay.config(state="normal")
+         topdisplay.config(state="normal")
+         bottomdisplay.delete("1.0", "end")
+         topdisplay.delete("1.0", "end")
+         value3 = int(value0)+int(value2)
+         bottomdisplay.insert('end', f'{value3}')
+         bottomdisplay.config(state="disabled")
+         topdisplay.config(state="disabled")
+         return  
+    if button_value == '+':
+       if value1 == '':
           bottomdisplay.config(state="normal")
-          value2 = value1
-          value1 = ''
-          topdisplay.insert('end', f'{value2.strip()} + ')
+          topdisplay.config(state="normal")
+          value1 = value0
+          value0 = ''
+          topdisplay.insert('end', f'{value1.strip()} + ')
           bottomdisplay.delete("1.0", "end")
           bottomdisplay.config(state="disabled")
+          topdisplay.config(state="disabled")
        elif value2 != '':
           bottomdisplay.config(state="normal")
-          value3 = value2+(bottomdisplay.get('1.0','end'))
-          value2 = bottomdisplay.get('1.0','end')
-          print(value2,value3)
-          value4 = value2+value3
-          topdisplay.insert('end', f'{value2.strip()} + ')
+          topdisplay.config(state="normal")
+          value2 = (int(value0) + (int(value2)))
+          value1 = bottomdisplay.get('1.0','end')
+          topdisplay.insert('end', f'{value1.strip()} + ')
           bottomdisplay.delete("1.0", "end")
-          bottomdisplay.config(state="disabled")       
+          bottomdisplay.config(state="disabled")   
+          topdisplay.config(state="disabled")
+       elif value1 != '':
+          bottomdisplay.config(state="normal")
+          topdisplay.config(state="normal")
+          value2 = (int(value0) + (int(value1)))
+          value1 = bottomdisplay.get('1.0','end')
+          topdisplay.insert('end', f'{value1.strip()} + ')
+          bottomdisplay.delete("1.0", "end")
+          bottomdisplay.config(state="disabled")          
+          topdisplay.config(state="disabled")
     else: # qualquer número cai aqui
        bottomdisplay.config(state="normal")
+       topdisplay.config(state="normal")
        bottomdisplay.insert('end', button_value)
-       value1 = bottomdisplay.get('1.0','end') # trocar pra value1 = button_value
+       value0 = bottomdisplay.get('1.0','end') 
        bottomdisplay.config(state="disabled")
+       topdisplay.config(state="disabled")
 
        
 button1 = gui.tk.Button(gui.window, text=gui.b1, background = gui.buttoncolor, borderwidth=0, width = gui.buttonw, height = gui.buttonh, fg = gui.buttonfontcolor , font = gui.buttonfont, command=functools.partial(button_clicked, gui.b1))
