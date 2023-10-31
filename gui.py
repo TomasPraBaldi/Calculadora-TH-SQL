@@ -9,6 +9,7 @@ import customtkinter as ctk
 #def math_logic.button_clicked(): 
 #    math_logic.math_logic.button_clicked2()
 
+
 window = ctk.CTk()
 ctk.set_appearance_mode('dark')
 window.corner_radius = 10
@@ -18,7 +19,7 @@ bgcolor = '#000'
 displaycolor = '#000'
 window.geometry(f'{totalw}x{totalh}')
 window.title('')
-window.iconbitmap(r"C:\Users\Hiurytg.000\Desktop\TH_SQL\Calculadora-TH-SQL\images\th_ico.ico")
+window.iconbitmap(r"th_ico.ico")
 window.config(bg = bgcolor)
 window.resizable(False,False)
 window.wm_attributes('-topmost', True)
